@@ -25,44 +25,44 @@ import com.paymentchain.product.respository.ProductRepository;
  * @author sotobotero
  */
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/product")
 public class ProductRestController {
-    
+
     @Autowired
     ProductRepository productRepository;
-    
+
     @GetMapping()
     public List<Product> list() {
         return productRepository.findAll();
     }
-    
+
     @GetMapping("/{id}")
     public Product get(@PathVariable long id) {
         return productRepository.findById(id).get();
     }
-    
+
     @PutMapping("/{id}")
     public ResponseEntity<?> put(@PathVariable long id, @RequestBody Product input) {
-         Product find = productRepository.findById(id).get();   
-       
+        Product find = productRepository.findById(id).get();
+
         Product save = productRepository.save(find);
-           return ResponseEntity.ok(save);
+        return ResponseEntity.ok(save);
     }
-    
+
     @PostMapping
     public ResponseEntity<?> post(@RequestBody Product input) {
-       
+
         Product save = productRepository.save(input);
         return ResponseEntity.ok(save);
     }
-    
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
-          Optional<Product> findById = productRepository.findById(id);   
-        if(findById.get() != null){               
-                  productRepository.delete(findById.get());  
+        Optional<Product> findById = productRepository.findById(id);
+        if (findById.get() != null) {
+            productRepository.delete(findById.get());
         }
         return ResponseEntity.ok().build();
     }
-    
+
 }
