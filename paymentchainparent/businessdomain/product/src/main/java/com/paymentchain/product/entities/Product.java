@@ -23,10 +23,5 @@ public class Product {
    private long id;
    private String code;
    private String name;
-
-    public Object getProducts() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
- 
    
 }
