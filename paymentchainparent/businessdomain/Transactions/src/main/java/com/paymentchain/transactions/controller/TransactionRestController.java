@@ -43,26 +43,14 @@ public class TransactionRestController {
          return transactionRepository.findById(id).map(x -> ResponseEntity.ok(x)).orElse(ResponseEntity.notFound().build());      
     }
     
-    @GetMapping("/customer/transactions")
+    @GetMapping("/transactions")
     public List<Transaction> get(@RequestParam String ibanAccount) {
       return transactionRepository.findByIbanAccount(ibanAccount);      
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<?> put(@PathVariable long id, @RequestBody Transaction input) {
-        Transaction find = transactionRepository.findById(id).get();
-        if (find != null) {
-            find.setAmount(input.getAmount());
-            find.setChannel(input.getChannel());
-            find.setDate(input.getDate());
-            find.setDescription(input.getDescription());
-            find.setFee(input.getFee());
-            find.setIbanAccount(input.getIbanAccount());
-            find.setReference(input.getReference());
-            find.setStatus(input.getStatus());
-        }
-        Transaction save = transactionRepository.save(find);
-        return ResponseEntity.ok(save);
+    public ResponseEntity<?> put(@PathVariable String id, @RequestBody Transaction input) {
+        return null;
     }
     
     @PostMapping
@@ -72,12 +60,8 @@ public class TransactionRestController {
     }
     
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable long id) {
-        Optional<Transaction> findById = transactionRepository.findById(id);   
-        if(findById.get() != null){               
-                  transactionRepository.delete(findById.get());  
-        }
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> delete(@PathVariable String id) {
+        return null;
     }
     
 }

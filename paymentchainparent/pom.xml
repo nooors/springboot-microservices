@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-        <!-- https://maven.apache.org/plugins/maven-site-plugin/examples/creating-content.html
+    <!-- https://maven.apache.org/plugins/maven-site-plugin/examples/creating-content.html
      Maven build has a specific lifecyle to deploy and distribuite de project    
     LIFECYCLES:
       There are 3 cicles integrated
@@ -51,12 +51,12 @@
     <name>paymentchainparent</name>
     <description>POM parent project for all spring boot projects</description>
    
- <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target> 
-        <spring-boot.version>2.7.5</spring-boot.version>
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target> 
+        <spring-boot.version>2.6.2</spring-boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
-        <postgres.version>42.5.0</postgres.version>    
+        <postgres.version>42.2.16</postgres.version>    
         <java-validation.version>2.0.1.Final</java-validation.version> 
         <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
     </properties>
@@ -77,7 +77,7 @@
     <dependencies>
         <!--Gives us the ability to quickly setup and run services
         Property Defaults,Automatic Restart,Live Reload,Global Settings,Remote Applications for debug example via http--> 	
-      
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -86,8 +86,24 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+        </dependency>                
+       
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-           
+        
+         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -119,7 +135,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>     
-                <version>${spring-boot.version}</version>      
+               <version>${spring-boot.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -128,7 +144,7 @@
                     </execution>
                 </executions>
             </plugin>        
-            <!--   <plugin>
+       <!--  <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>${dockerfile-maven-version}</version>                               
@@ -138,18 +154,18 @@
                         <phase>package</phase>
                         <goals>                                              
                             <goal>build</goal>
-                           <goal>push</goal>
+                            <goal>push</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>                       
-                    <repository>digitalthinking/microservice-docker-${project.artifactId}</repository>
+                    <repository>paymentchain/microservice-docker-${project.artifactId}</repository>
                     <tag>${project.version}</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
-            </plugin>-->  
+            </plugin>-->
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -167,7 +183,7 @@
                 </configuration> 
             </plugin>
             <!--generate project code documentation-->
-          <!--  <plugin>
+            <!--  <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9</version>
@@ -183,8 +199,8 @@
                     </execution>
                 </executions>
             </plugin>-->
-               <!--generate maven site documentation-->
-          <!--  <plugin>
+            <!--generate maven site documentation-->
+            <!--  <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.9.1</version>    
