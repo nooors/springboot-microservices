@@ -93,7 +93,7 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         
-         <dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -135,7 +135,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>     
-               <version>${spring-boot.version}</version>
+                <version>${spring-boot.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -144,7 +144,7 @@
                     </execution>
                 </executions>
             </plugin>        
-       <!--  <plugin>
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>${dockerfile-maven-version}</version>                               
@@ -165,7 +165,7 @@
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
                 </configuration>
-            </plugin>-->
+            </plugin>
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
